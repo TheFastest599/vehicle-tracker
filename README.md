@@ -226,28 +226,6 @@ App
 4. **Component Consumption** - Components subscribe to real GPS coordinate updates
 5. **Real-time Simulation** - Vehicle follows actual recorded GPS path with realistic timing
 
-## 🌐 Deployment
-
-The application is deployed on **Netlify** with automatic deployments from the main branch.
-
-### Deploy Your Own
-
-1. **Fork this repository**
-2. **Connect to Netlify**
-3. **Configure build settings:**
-   ```
-   Build command: npm run build
-   Publish directory: dist
-   ```
-4. **Deploy automatically on push**
-
-### Environment Variables (if needed)
-
-```env
-# Add any environment variables here
-VITE_API_KEY=your_api_key_here
-```
-
 ## 📝 License
 
 This project is licensed under the **MIT License** - see the [LICENSE](LICENSE) file for details.
