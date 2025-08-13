@@ -113,7 +113,7 @@ const GpxMapDisplay = () => {
   if (isLoading) {
     return (
       <div className="flex items-center justify-center h-full">
-        <div className="card bg-base-100 shadow-xl">
+        <div className="card">
           <div className="card-body items-center text-center">
             <div className="loading loading-spinner loading-lg text-primary"></div>
             <h3 className="card-title">Loading GPX Route...</h3>

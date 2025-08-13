@@ -2,7 +2,7 @@ import React from 'react';
 
 const ProgressBar = ({ value }) => {
   return (
-    <div className="card bg-base-100 shadow-xl w-96 max-w-sm mx-auto">
+    <div className="card  w-96 max-w-sm mx-auto">
       <div className="card-body items-center text-center">
         <div className="text-4xl mb-4">🚌</div>
         <h3 className="card-title">Loading GPX Route</h3>
