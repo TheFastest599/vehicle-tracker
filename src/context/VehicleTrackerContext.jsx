@@ -1,4 +1,10 @@
-import React, { createContext, useContext, useState, useCallback, useEffect } from 'react';
+import React, {
+  createContext,
+  useContext,
+  useState,
+  useCallback,
+  useEffect,
+} from 'react';
 import { useVehicleSimulation } from '../hooks/useVehicleSimulationFast';
 import * as mainFunctions from '../functions/main-functions';
 import gpxFileUrl from '../assets/routes.gpx?url';
@@ -10,7 +16,9 @@ const VehicleTrackerContext = createContext();
 export const useVehicleTracker = () => {
   const context = useContext(VehicleTrackerContext);
   if (!context) {
-    throw new Error('useVehicleTracker must be used within a VehicleTrackerProvider');
+    throw new Error(
+      'useVehicleTracker must be used within a VehicleTrackerProvider'
+    );
   }
   return context;
 };
@@ -22,15 +30,15 @@ export const VehicleTrackerProvider = ({ children }) => {
   const [rawGpxData, setRawGpxData] = useState([]);
   const [gpxElevationData, setGpxElevationData] = useState([]);
   const [elevationsData, setElevationsData] = useState([0, 100]);
-  
+
   // Loading state
   const [isLoading, setIsLoading] = useState(true);
   const [loadingProgress, setLoadingProgress] = useState(0);
   const [routeLoaded, setRouteLoaded] = useState(false);
-  
+
   // Playback state
   const [playbackSpeed, setPlaybackSpeed] = useState(1);
-  
+
   // Vehicle simulation hook
   const {
     currentPosition,
@@ -50,16 +58,19 @@ export const VehicleTrackerProvider = ({ children }) => {
   } = useVehicleSimulation(routeData);
 
   // Handle playback speed changes
-  const handleSpeedChange = useCallback((newSpeed) => {
-    setPlaybackSpeed(newSpeed);
-    updatePlaybackSpeed(newSpeed);
-  }, [updatePlaybackSpeed]);
+  const handleSpeedChange = useCallback(
+    newSpeed => {
+      setPlaybackSpeed(newSpeed);
+      updatePlaybackSpeed(newSpeed);
+    },
+    [updatePlaybackSpeed]
+  );
 
   // GPX parsing and loading
   const loadGpxData = useCallback(async () => {
     try {
       setIsLoading(true);
-      
+
       // Simulate loading progress
       const progressInterval = setInterval(() => {
         setLoadingProgress(prev => {
@@ -77,7 +88,8 @@ export const VehicleTrackerProvider = ({ children }) => {
       setRawGpxData(parseGpxData);
 
       // Convert to vehicle route format
-      const vehicleRouteData = mainFunctions.convertGpxToVehicleRoute(parseGpxData);
+      const vehicleRouteData =
+        mainFunctions.convertGpxToVehicleRoute(parseGpxData);
       setRouteData(vehicleRouteData);
 
       // Merge elevations for hotline
@@ -85,7 +97,9 @@ export const VehicleTrackerProvider = ({ children }) => {
       setGpxElevationData(mergeElevations);
 
       // Get the min & max elevation
-      const minMaxElevations = await mainFunctions.getMinMaxElevation(parseGpxData);
+      const minMaxElevations = await mainFunctions.getMinMaxElevation(
+        parseGpxData
+      );
       setElevationsData(minMaxElevations);
 
       setRouteLoaded(true);
@@ -126,12 +140,12 @@ export const VehicleTrackerProvider = ({ children }) => {
     rawGpxData,
     gpxElevationData,
     elevationsData,
-    
+
     // Loading state
     isLoading,
     loadingProgress,
     routeLoaded,
-    
+
     // Vehicle simulation data
     currentPosition,
     visitedPoints,
@@ -142,14 +156,14 @@ export const VehicleTrackerProvider = ({ children }) => {
     currentIndex,
     totalPoints,
     isAtEnd,
-    
+
     // Playback controls
     playbackSpeed,
     play,
     pause,
     reset: handleReset,
     onSpeedChange: handleSpeedChange,
-    
+
     // Utility functions
     reloadGpxData,
   };

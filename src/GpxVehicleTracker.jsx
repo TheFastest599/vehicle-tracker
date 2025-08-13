@@ -1,7 +1,10 @@
 import React from 'react';
 import GpxMapDisplay from './components/GpxMapDisplay';
 import Controls from './components/Controls';
-import { VehicleTrackerProvider, useVehicleTracker } from './context/VehicleTrackerContext';
+import {
+  VehicleTrackerProvider,
+  useVehicleTracker,
+} from './context/VehicleTrackerContext';
 import './App.css';
 
 const GpxVehicleTrackerContent = () => {

@@ -161,7 +161,10 @@ const GpxMapDisplay = () => {
           )}
 
           {/* Elevation Hotline */}
-          <ElevationHotline gpxData={gpxElevationData} elevationsData={elevationsData} />
+          <ElevationHotline
+            gpxData={gpxElevationData}
+            elevationsData={elevationsData}
+          />
 
           <LayersControl position="topright">
             <LayersControl.BaseLayer checked name="Google Satellite">
