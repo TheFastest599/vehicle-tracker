@@ -3,6 +3,9 @@
 @tailwind utilities; */
 
 @import 'tailwindcss';
+@plugin "daisyui" {
+  themes: lemonade --default;
+}
 
 /* Leaflet CSS imports */
 @import 'leaflet/dist/leaflet.css';

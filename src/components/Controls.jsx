@@ -1,4 +1,12 @@
-import { Play, Pause, RotateCcw, Gauge } from 'lucide-react';
+import {
+  Play,
+  Pause,
+  RotateCcw,
+  Gauge,
+  MapPin,
+  Clock,
+  Zap,
+} from 'lucide-react';
 
 const Controls = ({
   isPlaying,
@@ -22,130 +30,194 @@ const Controls = ({
       .padStart(2, '0')}`;
   };
 
+  const progressPercentage =
+    totalPoints > 0 ? ((currentIndex + 1) / totalPoints) * 100 : 0;
+
   return (
-    <div className="bg-white shadow-lg rounded-lg p-4 m-4">
-      {/* Header */}
-      <div className="flex items-center justify-between mb-4">
-        <h2 className="text-xl font-bold text-yellow-600 flex items-center gap-2">
-          🚌 Vehicle Tracker
-        </h2>
-        <div className="badge badge-warning">Live Simulation</div>
+    <div className="space-y-6 m-2">
+      {/* Header Card */}
+      <div className="card bg-gradient-to-r from-primary to-secondary text-primary-content">
+        <div className="card-body p-2">
+          <div className="flex items-center justify-between">
+            <div className="flex items-center gap-3">
+              <div className="avatar">
+                <div className="w-10 rounded-full bg-white/20 p-2">
+                  <div className="text-white text-lg text-center">🚌</div>
+                </div>
+              </div>
+              <div>
+                <h2 className="text-lg font-bold">Vehicle Control</h2>
+                <div className="text-sm opacity-80">Live GPS Simulation</div>
+              </div>
+            </div>
+            <div
+              className={`badge ${
+                isPlaying ? 'badge-success' : 'badge-warning'
+              } gap-2`}
+            >
+              <div className="w-2 h-2 rounded-full bg-current animate-pulse"></div>
+              {isPlaying ? 'LIVE' : 'PAUSED'}
+            </div>
+          </div>
+        </div>
       </div>
 
       {/* Main Controls */}
-      <div className="flex flex-wrap items-center gap-3 mb-4">
-        <div className="flex gap-2">
-          {!isPlaying ? (
+      <div className="card bg-base-100 ">
+        <div className="card-body p-4">
+          <div className="flex flex-wrap gap-3 justify-center">
+            {!isPlaying ? (
+              <button
+                className="btn btn-primary btn-lg gap-2 flex-1 sm:flex-none"
+                onClick={onPlay}
+                disabled={isAtEnd}
+              >
+                <Play size={20} />
+                Start Journey
+              </button>
+            ) : (
+              <button
+                className="btn btn-warning btn-lg gap-2 flex-1 sm:flex-none"
+                onClick={onPause}
+              >
+                <Pause size={20} />
+                Pause
+              </button>
+            )}
+
             <button
-              className="btn btn-warning btn-sm"
-              onClick={onPlay}
-              disabled={isAtEnd}
+              className="btn btn-outline btn-lg gap-2 flex-1 sm:flex-none"
+              onClick={onReset}
             >
-              <Play size={16} />
-              Play
+              <RotateCcw size={20} />
+              Reset
             </button>
-          ) : (
-            <button className="btn btn-warning btn-sm" onClick={onPause}>
-              <Pause size={16} />
-              Pause
-            </button>
-          )}
+          </div>
 
-          <button className="btn btn-outline btn-sm" onClick={onReset}>
-            <RotateCcw size={16} />
-            Reset
-          </button>
-        </div>
-
-        {/* Speed Control */}
-        <div className="flex items-center gap-2">
-          <Gauge size={16} className="text-yellow-600" />
-          <span className="text-sm font-medium">Speed:</span>
-          <select
-            className="select select-bordered select-sm w-20"
-            value={playbackSpeed}
-            onChange={e => onSpeedChange(parseFloat(e.target.value))}
-          >
-            <option value={0.5}>0.5x</option>
-            <option value={1}>1x</option>
-            <option value={1.5}>1.5x</option>
-            <option value={2}>2x</option>
-            <option value={3}>3x</option>
-          </select>
-        </div>
-      </div>
-
-      {/* Progress Bar */}
-      <div className="mb-4">
-        <div className="flex justify-between text-sm mb-1">
-          <span>Progress</span>
-          <span>
-            {currentIndex + 1} / {totalPoints}
-          </span>
-        </div>
-        <progress
-          className="progress progress-warning w-full"
-          value={currentIndex + 1}
-          max={totalPoints}
-        ></progress>
-      </div>
-
-      {/* Stats Grid */}
-      <div className="grid grid-cols-2 md:grid-cols-4 gap-4 text-sm">
-        <div className="stat bg-yellow-50 rounded-lg p-3">
-          <div className="stat-title text-xs">Elapsed Time</div>
-          <div className="stat-value text-lg text-yellow-600">
-            {formatTime(elapsedTime)}
+          {/* Speed Control */}
+          <div className="divider">Playback Speed</div>
+          <div className="form-control">
+            <label className="label">
+              <span className="label-text flex items-center gap-2">
+                <Zap size={16} />
+                Speed Multiplier: {playbackSpeed}x
+              </span>
+            </label>
+            <select
+              className="select select-primary select-bordered w-full"
+              value={playbackSpeed}
+              onChange={e => onSpeedChange(parseFloat(e.target.value))}
+            >
+              <option value={0.5}>🐌 0.5x - Slow Motion</option>
+              <option value={1}>🚶 1x - Normal Speed</option>
+              <option value={1.5}>🚗 1.5x - Fast</option>
+              <option value={2}>🏃 2x - Very Fast</option>
+              <option value={3}>🚀 3x - Lightning</option>
+              <option value={5}>⚡ 5x - Turbo</option>
+            </select>
           </div>
         </div>
+      </div>
 
-        <div className="stat bg-yellow-50 rounded-lg p-3">
-          <div className="stat-title text-xs">Speed</div>
-          <div className="stat-value text-lg text-yellow-600">{speed} km/h</div>
-        </div>
+      {/* Progress Card */}
+      <div className="card bg-base-100">
+        <div className="card-body p-4">
+          <h3 className="card-title text-base">Journey Progress</h3>
 
-        {currentPosition && (
-          <>
-            <div className="stat bg-yellow-50 rounded-lg p-3">
-              <div className="stat-title text-xs">Latitude</div>
-              <div className="stat-value text-sm text-yellow-600">
-                {currentPosition.latitude.toFixed(6)}
+          <div className="space-y-4">
+            {/* Progress Bar */}
+            <div>
+              <div className="flex justify-between text-sm mb-2">
+                <span>Route Completion</span>
+                <span className="font-mono">
+                  {currentIndex + 1} / {totalPoints}
+                </span>
+              </div>
+              <progress
+                className="progress progress-primary w-full h-3"
+                value={progressPercentage}
+                max="100"
+              ></progress>
+              <div className="text-center text-xs mt-1 opacity-70">
+                {progressPercentage.toFixed(1)}% Complete
               </div>
             </div>
 
-            <div className="stat bg-yellow-50 rounded-lg p-3">
-              <div className="stat-title text-xs">Longitude</div>
-              <div className="stat-value text-sm text-yellow-600">
-                {currentPosition.longitude.toFixed(6)}
+            {/* Time Badge */}
+            <div className="flex justify-center">
+              <div className="badge badge-lg badge-outline gap-2">
+                <Clock size={16} />
+                {formatTime(elapsedTime)}
               </div>
             </div>
-          </>
-        )}
+          </div>
+        </div>
       </div>
 
-      {/* Status */}
-      <div className="mt-4 flex items-center justify-between">
-        <div className="flex items-center gap-2">
-          <div
-            className={`w-3 h-3 rounded-full ${
-              isPlaying ? 'bg-green-500' : 'bg-red-500'
-            }`}
-          ></div>
-          <span className="text-sm font-medium">
-            {isPlaying
-              ? 'Vehicle Moving'
-              : isAtEnd
-              ? 'Route Completed'
-              : 'Vehicle Stopped'}
-          </span>
+      {/* Stats Cards */}
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+        {/* Speed Card */}
+        <div className="card bg-gradient-to-br from-success/20 to-success/5 border border-success/20">
+          <div className="card-body p-4 text-center">
+            <div className="text-success text-2xl mb-2">
+              <Gauge className="mx-auto" size={32} />
+            </div>
+            <div className="stat-value text-xl text-success">{speed}</div>
+            <div className="stat-desc">km/h</div>
+          </div>
         </div>
 
-        {currentPosition && (
-          <div className="text-xs text-gray-500">
-            Last Update:{' '}
-            {new Date(currentPosition.timestamp).toLocaleTimeString()}
+        {/* Location Card */}
+        <div className="card bg-gradient-to-br from-info/20 to-info/5 border border-info/20">
+          <div className="card-body p-4 text-center">
+            <div className="text-info text-2xl mb-2">
+              <MapPin className="mx-auto" size={32} />
+            </div>
+            <div className="stat-desc">Current Location</div>
+            <div className="text-xs opacity-70 mt-1">
+              {currentPosition ? (
+                <>
+                  <div>{currentPosition.latitude.toFixed(6)}</div>
+                  <div>{currentPosition.longitude.toFixed(6)}</div>
+                </>
+              ) : (
+                'No position data'
+              )}
+            </div>
           </div>
-        )}
+        </div>
+      </div>
+
+      {/* Status Footer */}
+      <div className="card bg-base-200/50">
+        <div className="card-body p-4">
+          <div className="flex items-center justify-between">
+            <div className="flex items-center gap-3">
+              <div
+                className={`w-3 h-3 rounded-full ${
+                  isPlaying
+                    ? 'bg-success animate-pulse'
+                    : isAtEnd
+                    ? 'bg-info'
+                    : 'bg-warning'
+                }`}
+              ></div>
+              <span className="text-sm font-medium">
+                {isPlaying
+                  ? 'Vehicle is moving...'
+                  : isAtEnd
+                  ? 'Journey completed! 🎉'
+                  : 'Vehicle stopped'}
+              </span>
+            </div>
+
+            {currentPosition && (
+              <div className="text-xs opacity-60">
+                {new Date(currentPosition.timestamp).toLocaleTimeString()}
+              </div>
+            )}
+          </div>
+        </div>
       </div>
     </div>
   );

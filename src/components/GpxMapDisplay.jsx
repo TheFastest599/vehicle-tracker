@@ -22,26 +22,15 @@ import VehicleMarker from './VehicleMarker';
 // Context
 import { useVehicleTracker } from '../context/VehicleTrackerContext';
 
-// Component to add hotline elevation data to the map
-const ElevationHotline = ({ gpxData, elevationsData }) => {
-  // Hotline functionality temporarily disabled
-  // Will be re-enabled once leaflet-hotline import issues are resolved
-  return null;
-};
-
-// Icons leaflet
-const icon = L.icon({
-  iconSize: [25, 41],
-  iconAnchor: [10, 41],
-  popupAnchor: [2, -40],
-  iconUrl: 'https://unpkg.com/leaflet@1.7/dist/images/marker-icon.png',
-  shadowUrl: 'https://unpkg.com/leaflet@1.7/dist/images/marker-shadow.png',
-});
-
 // Map's params - Default to Bengal College area
 const position = [23.5212647, 87.3412147];
 const zoom = 13;
-const style = { height: '600px' };
+const style = {
+  height: '100%',
+  minHeight: '60vh',
+  borderRadius: '12px',
+  overflow: 'hidden',
+};
 
 const mapViewFormatObj = {
   GoogleSatellite: {
@@ -86,113 +75,135 @@ const GpxMapDisplay = () => {
   const DisplayTrackList = () => {
     let tracksName = rawGpxData.map((element, i) => {
       return (
-        <span key={i} className="badge badge-primary mr-2">
+        <span className="text-sm mx-4" key={i}>
           {element.name}
         </span>
       );
     });
 
     return (
-      <div className="mb-4">
-        <h2 className="text-lg font-bold mb-2">GPX Route Information</h2>
-        <div className="flex flex-wrap gap-2">{tracksName}</div>
-        <div className="mt-2 text-sm text-gray-600">
-          Total Points: {routeData?.length || 0} | Current:{' '}
-          {routeData && currentPosition
-            ? routeData.findIndex(p => p === currentPosition) + 1
-            : 0}
+      <div className="card  mb-4">
+        <div className="card-body p-4">
+          <h3 className="card-title text-base flex items-center gap-2">
+            <div className="w-3 h-3 bg-primary rounded-full"></div>
+            Route Information
+          </h3>
+          <div className="flex flex-wrap gap-2 mb-1">{tracksName}</div>
+          <div className="stats stats-horizontal bg-base-200/50 rounded-lg">
+            <div className="stat py-2 px-4">
+              <div className="stat-title text-xs">Total Points</div>
+              <div className="stat-value text-lg text-primary">
+                {routeData?.length || 0}
+              </div>
+            </div>
+            <div className="stat py-2 px-4">
+              <div className="stat-title text-xs">Current Point</div>
+              <div className="stat-value text-lg text-secondary">
+                {routeData && currentPosition
+                  ? routeData.findIndex(p => p === currentPosition) + 1
+                  : 0}
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     );
   };
 
   if (isLoading) {
-    return <ProgressBar value={loadingProgress} />;
+    return (
+      <div className="flex items-center justify-center h-full">
+        <div className="card bg-base-100 shadow-xl">
+          <div className="card-body items-center text-center">
+            <div className="loading loading-spinner loading-lg text-primary"></div>
+            <h3 className="card-title">Loading GPX Route...</h3>
+            <ProgressBar value={loadingProgress} />
+          </div>
+        </div>
+      </div>
+    );
   }
 
   return (
-    <div className="h-screen flex flex-col">
-      <div className="p-4 bg-white shadow-md">
+    <div className="h-full flex flex-col">
+      <div className="p-0">
         <DisplayTrackList />
       </div>
 
-      <div className="flex-1">
-        <MapContainer
-          center={position}
-          zoom={zoom}
-          style={style}
-          className="h-full"
-        >
-          {/* Route Polyline */}
-          {routeData && routeData.length > 0 && (
-            <Polyline
-              pathOptions={{
-                fillColor: 'blue',
-                color: 'blue',
-                weight: 3,
-                opacity: 0.7,
-              }}
-              positions={routeData.map(point => [
-                point.latitude,
-                point.longitude,
-              ])}
-            />
-          )}
-
-          {/* Visited Route */}
-          {visitedPoints && visitedPoints.length > 0 && (
-            <Polyline
-              pathOptions={{
-                fillColor: 'red',
-                color: 'red',
-                weight: 4,
-                opacity: 0.8,
-              }}
-              positions={visitedPoints.map(point => [
-                point.latitude,
-                point.longitude,
-              ])}
-            />
-          )}
-
-          {/* Vehicle Marker */}
-          {currentPosition && (
-            <VehicleMarker position={currentPosition} isMoving={isPlaying} />
-          )}
-
-          {/* Elevation Hotline */}
-          <ElevationHotline
-            gpxData={gpxElevationData}
-            elevationsData={elevationsData}
-          />
-
-          <LayersControl position="topright">
-            <LayersControl.BaseLayer checked name="Google Satellite">
-              <TileLayer
-                attribution={mapViewFormatObj.GoogleSatellite.attribution}
-                url={mapViewFormatObj.GoogleSatellite.url}
+      <div className="flex-1 mx-4 pb-4">
+        <div className="h-full rounded-xl overflow-hidden ">
+          <MapContainer
+            center={position}
+            zoom={zoom}
+            style={style}
+            className="h-full w-full"
+          >
+            {/* Route Polyline */}
+            {routeData && routeData.length > 0 && (
+              <Polyline
+                pathOptions={{
+                  fillColor: 'blue',
+                  color: 'blue',
+                  weight: 3,
+                  opacity: 0.7,
+                }}
+                positions={routeData.map(point => [
+                  point.latitude,
+                  point.longitude,
+                ])}
               />
-            </LayersControl.BaseLayer>
-            <LayersControl.BaseLayer name="Google Hybrid">
-              <TileLayer
-                attribution={mapViewFormatObj.GoogleHybrid.attribution}
-                url={mapViewFormatObj.GoogleHybrid.url}
+            )}
+
+            {/* Visited Route */}
+            {visitedPoints && visitedPoints.length > 0 && (
+              <Polyline
+                pathOptions={{
+                  fillColor: 'red',
+                  color: 'red',
+                  weight: 4,
+                  opacity: 0.8,
+                }}
+                positions={visitedPoints.map(point => [
+                  point.latitude,
+                  point.longitude,
+                ])}
               />
-            </LayersControl.BaseLayer>
-            <LayersControl.BaseLayer name="OpenStreetMap">
-              <TileLayer
-                attribution={mapViewFormatObj.OpenStreetMapMapnik.attribution}
-                url={mapViewFormatObj.OpenStreetMapMapnik.url}
-              />
-            </LayersControl.BaseLayer>
-            <LayersControl.BaseLayer name="OpenTopoMap">
-              <TileLayer
-                attribution={mapViewFormatObj.OpenTopoMap.attribution}
-                url={mapViewFormatObj.OpenTopoMap.url}
-              />
-            </LayersControl.BaseLayer>
-          </LayersControl>
-        </MapContainer>
+            )}
+
+            {/* Vehicle Marker */}
+            {currentPosition && (
+              <VehicleMarker position={currentPosition} isMoving={isPlaying} />
+            )}
+
+            <LayersControl position="topright">
+              <LayersControl.BaseLayer checked name="OpenStreetMap">
+                <TileLayer
+                  attribution={mapViewFormatObj.OpenStreetMapMapnik.attribution}
+                  url={mapViewFormatObj.OpenStreetMapMapnik.url}
+                />
+              </LayersControl.BaseLayer>
+              <LayersControl.BaseLayer name="Google Satellite">
+                <TileLayer
+                  attribution={mapViewFormatObj.GoogleSatellite.attribution}
+                  url={mapViewFormatObj.GoogleSatellite.url}
+                />
+              </LayersControl.BaseLayer>
+              <LayersControl.BaseLayer name="Google Hybrid">
+                <TileLayer
+                  attribution={mapViewFormatObj.GoogleHybrid.attribution}
+                  url={mapViewFormatObj.GoogleHybrid.url}
+                />
+              </LayersControl.BaseLayer>
+
+              <LayersControl.BaseLayer name="OpenTopoMap">
+                <TileLayer
+                  attribution={mapViewFormatObj.OpenTopoMap.attribution}
+                  url={mapViewFormatObj.OpenTopoMap.url}
+                />
+              </LayersControl.BaseLayer>
+            </LayersControl>
+          </MapContainer>
+        </div>
       </div>
     </div>
   );
