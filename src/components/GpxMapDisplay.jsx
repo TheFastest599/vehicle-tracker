@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 
 // CSS
 import '../css/map.css';
@@ -11,20 +11,16 @@ import {
   TileLayer,
   Polyline,
   LayersControl,
-  useMap,
 } from 'react-leaflet';
-
-// GPX file URL
-import gpxFileUrl from '../assets/routes.gpx?url';
 
 // Progress bar
 import ProgressBar from './progress-bar';
 
-// Main functions
-import * as mainFunctions from '../functions/main-functions';
-
 // Vehicle components
 import VehicleMarker from './VehicleMarker';
+
+// Context
+import { useVehicleTracker } from '../context/VehicleTrackerContext';
 
 // Component to add hotline elevation data to the map
 const ElevationHotline = ({ gpxData, elevationsData }) => {
@@ -73,73 +69,22 @@ const mapViewFormatObj = {
 };
 
 // GPX MAP DISPLAY COMPONENT
-const GpxMapDisplay = ({
-  onRouteLoaded,
-  currentPosition,
-  visitedPoints,
-  fullRoute,
-  isPlaying,
-}) => {
-  // States
-  const [loading, setLoading] = useState(true);
-  const [value, updateValue] = useState(0);
-  const [gpxData, setGpxData] = useState([]);
-  const [rawdata, setRawData] = useState([]);
-  const [elevationsData, setElevationsData] = useState([0, 100]);
-
-  // Side effects
-  useEffect(() => {
-    // Progress bar
-    const interval = setInterval(() => {
-      updateValue(oldValue => {
-        const newValue = oldValue + 10;
-        if (newValue >= 100) {
-          clearInterval(interval);
-          setLoading(false);
-        }
-        return newValue;
-      });
-    }, 100);
-
-    const parseGpx = async () => {
-      try {
-        // Parse gpx function
-        const parseGpxData = await mainFunctions.parseGpxFile(gpxFileUrl);
-        setRawData(parseGpxData);
-
-        // Convert to vehicle route format
-        const vehicleRouteData =
-          mainFunctions.convertGpxToVehicleRoute(parseGpxData);
-
-        // Pass route data to parent component
-        if (onRouteLoaded) {
-          onRouteLoaded(vehicleRouteData);
-        }
-
-        // Merge elevations for hotline
-        const mergeElevations = await mainFunctions.mergeElevation(
-          parseGpxData
-        );
-        setGpxData(mergeElevations);
-
-        // Get the min & the max elevation
-        const minMaxElevations = await mainFunctions.getMinMaxElevation(
-          parseGpxData
-        );
-        setElevationsData(minMaxElevations);
-      } catch (error) {
-        console.error('Error loading GPX data:', error);
-      }
-    };
-
-    parseGpx();
-
-    return () => clearInterval(interval);
-  }, []); // Empty dependency array - only run once on mount
+const GpxMapDisplay = () => {
+  const {
+    isLoading,
+    loadingProgress,
+    rawGpxData,
+    gpxElevationData,
+    elevationsData,
+    currentPosition,
+    visitedPoints,
+    routeData,
+    isPlaying,
+  } = useVehicleTracker();
 
   // Display tracks list
   const DisplayTrackList = () => {
-    let tracksName = rawdata.map((element, i) => {
+    let tracksName = rawGpxData.map((element, i) => {
       return (
         <span key={i} className="badge badge-primary mr-2">
           {element.name}
@@ -152,17 +97,17 @@ const GpxMapDisplay = ({
         <h2 className="text-lg font-bold mb-2">GPX Route Information</h2>
         <div className="flex flex-wrap gap-2">{tracksName}</div>
         <div className="mt-2 text-sm text-gray-600">
-          Total Points: {fullRoute?.length || 0} | Current:{' '}
-          {fullRoute && currentPosition
-            ? fullRoute.findIndex(p => p === currentPosition) + 1
+          Total Points: {routeData?.length || 0} | Current:{' '}
+          {routeData && currentPosition
+            ? routeData.findIndex(p => p === currentPosition) + 1
             : 0}
         </div>
       </div>
     );
   };
 
-  if (loading) {
-    return <ProgressBar value={value} />;
+  if (isLoading) {
+    return <ProgressBar value={loadingProgress} />;
   }
 
   return (
@@ -179,7 +124,7 @@ const GpxMapDisplay = ({
           className="h-full"
         >
           {/* Route Polyline */}
-          {fullRoute && fullRoute.length > 0 && (
+          {routeData && routeData.length > 0 && (
             <Polyline
               pathOptions={{
                 fillColor: 'blue',
@@ -187,7 +132,7 @@ const GpxMapDisplay = ({
                 weight: 3,
                 opacity: 0.7,
               }}
-              positions={fullRoute.map(point => [
+              positions={routeData.map(point => [
                 point.latitude,
                 point.longitude,
               ])}
@@ -216,7 +161,7 @@ const GpxMapDisplay = ({
           )}
 
           {/* Elevation Hotline */}
-          <ElevationHotline gpxData={gpxData} elevationsData={elevationsData} />
+          <ElevationHotline gpxData={gpxElevationData} elevationsData={elevationsData} />
 
           <LayersControl position="topright">
             <LayersControl.BaseLayer checked name="Google Satellite">

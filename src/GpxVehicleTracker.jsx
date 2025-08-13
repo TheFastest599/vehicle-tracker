@@ -1,14 +1,10 @@
-import React, { useState, useCallback } from 'react';
+import React from 'react';
 import GpxMapDisplay from './components/GpxMapDisplay';
-import { useVehicleSimulation } from './hooks/useVehicleSimulationFast';
 import Controls from './components/Controls';
+import { VehicleTrackerProvider, useVehicleTracker } from './context/VehicleTrackerContext';
 import './App.css';
 
-function GpxVehicleTracker() {
-  const [routeData, setRouteData] = useState([]);
-  const [playbackSpeed, setPlaybackSpeed] = useState(1);
-  const [routeLoaded, setRouteLoaded] = useState(false);
-
+const GpxVehicleTrackerContent = () => {
   const {
     currentPosition,
     visitedPoints,
@@ -16,28 +12,16 @@ function GpxVehicleTracker() {
     elapsedTime,
     speed,
     status,
-    playbackSpeed: currentPlaybackSpeed,
+    playbackSpeed,
     currentIndex,
     totalPoints,
     play,
     pause,
     reset,
-    setPlaybackSpeed: updatePlaybackSpeed,
+    onSpeedChange,
     isAtEnd,
-  } = useVehicleSimulation(routeData);
-
-  const handleSpeedChange = newSpeed => {
-    setPlaybackSpeed(newSpeed);
-    updatePlaybackSpeed(newSpeed);
-  };
-
-  const handleRouteLoaded = useCallback((newRouteData) => {
-    // Only set route data if it hasn't been loaded yet
-    if (!routeLoaded && newRouteData && newRouteData.length > 0) {
-      setRouteData(newRouteData);
-      setRouteLoaded(true);
-    }
-  }, [routeLoaded]);
+    routeData,
+  } = useVehicleTracker();
 
   return (
     <div className="App">
@@ -54,7 +38,7 @@ function GpxVehicleTracker() {
             speed={speed || currentPosition?.speed || 0}
             status={status || currentPosition?.status || 'Ready'}
             playbackSpeed={playbackSpeed}
-            onSpeedChange={handleSpeedChange}
+            onSpeedChange={onSpeedChange}
             currentIndex={currentIndex}
             totalPoints={totalPoints}
             isAtEnd={isAtEnd}
@@ -64,7 +48,6 @@ function GpxVehicleTracker() {
         {/* Map Panel */}
         <div className="lg:col-span-3">
           <GpxMapDisplay
-            onRouteLoaded={handleRouteLoaded}
             currentPosition={currentPosition}
             visitedPoints={visitedPoints}
             fullRoute={routeData}
@@ -73,6 +56,14 @@ function GpxVehicleTracker() {
         </div>
       </div>
     </div>
+  );
+};
+
+function GpxVehicleTracker() {
+  return (
+    <VehicleTrackerProvider>
+      <GpxVehicleTrackerContent />
+    </VehicleTrackerProvider>
   );
 }
 
