@@ -7,21 +7,23 @@ import {
   Clock,
   Zap,
 } from 'lucide-react';
+import { useVehicleTracker } from '../context/VehicleTrackerContext';
 
-const Controls = ({
-  isPlaying,
-  onPlay,
-  onPause,
-  onReset,
-  currentPosition,
-  elapsedTime,
-  speed,
-  playbackSpeed,
-  onSpeedChange,
-  currentIndex,
-  totalPoints,
-  isAtEnd,
-}) => {
+const Controls = () => {
+  const {
+    isPlaying,
+    play,
+    pause,
+    reset,
+    currentPosition,
+    elapsedTime,
+    speed,
+    playbackSpeed,
+    onSpeedChange,
+    currentIndex,
+    totalPoints,
+    isAtEnd,
+  } = useVehicleTracker();
   const formatTime = seconds => {
     const mins = Math.floor(seconds / 60);
     const secs = seconds % 60;
@@ -69,7 +71,7 @@ const Controls = ({
             {!isPlaying ? (
               <button
                 className="btn btn-primary btn-lg gap-2 flex-1 sm:flex-none"
-                onClick={onPlay}
+                onClick={play}
                 disabled={isAtEnd}
               >
                 <Play size={20} />
@@ -78,7 +80,7 @@ const Controls = ({
             ) : (
               <button
                 className="btn btn-warning btn-lg gap-2 flex-1 sm:flex-none"
-                onClick={onPause}
+                onClick={pause}
               >
                 <Pause size={20} />
                 Pause
@@ -87,7 +89,7 @@ const Controls = ({
 
             <button
               className="btn btn-outline btn-lg gap-2 flex-1 sm:flex-none"
-              onClick={onReset}
+              onClick={reset}
             >
               <RotateCcw size={20} />
               Reset
