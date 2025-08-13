@@ -1,0 +1,632 @@
+[
+  {
+    "latitude": 17.4065,
+    "longitude": 78.4772,
+    "timestamp": "2024-07-20T08:00:00Z",
+    "speed": 0,
+    "status": "At Bus Stop - Hitech City"
+  },
+  {
+    "latitude": 17.4068,
+    "longitude": 78.4775,
+    "timestamp": "2024-07-20T08:00:15Z",
+    "speed": 5,
+    "status": "Starting Route"
+  },
+  {
+    "latitude": 17.4075,
+    "longitude": 78.478,
+    "timestamp": "2024-07-20T08:00:30Z",
+    "speed": 15,
+    "status": "Moving"
+  },
+  {
+    "latitude": 17.4085,
+    "longitude": 78.4788,
+    "timestamp": "2024-07-20T08:00:45Z",
+    "speed": 25,
+    "status": "On Main Road"
+  },
+  {
+    "latitude": 17.4095,
+    "longitude": 78.4798,
+    "timestamp": "2024-07-20T08:01:00Z",
+    "speed": 30,
+    "status": "Normal Speed"
+  },
+  {
+    "latitude": 17.4108,
+    "longitude": 78.481,
+    "timestamp": "2024-07-20T08:01:15Z",
+    "speed": 35,
+    "status": "Normal Speed"
+  },
+  {
+    "latitude": 17.4122,
+    "longitude": 78.4825,
+    "timestamp": "2024-07-20T08:01:30Z",
+    "speed": 40,
+    "status": "Normal Speed"
+  },
+  {
+    "latitude": 17.4138,
+    "longitude": 78.4842,
+    "timestamp": "2024-07-20T08:01:45Z",
+    "speed": 45,
+    "status": "Normal Speed"
+  },
+  {
+    "latitude": 17.4155,
+    "longitude": 78.486,
+    "timestamp": "2024-07-20T08:02:00Z",
+    "speed": 40,
+    "status": "Approaching Turn"
+  },
+  {
+    "latitude": 17.417,
+    "longitude": 78.4875,
+    "timestamp": "2024-07-20T08:02:15Z",
+    "speed": 30,
+    "status": "Turning Right"
+  },
+  {
+    "latitude": 17.4182,
+    "longitude": 78.4888,
+    "timestamp": "2024-07-20T08:02:30Z",
+    "speed": 35,
+    "status": "On Jubilee Hills Road"
+  },
+  {
+    "latitude": 17.4195,
+    "longitude": 78.4902,
+    "timestamp": "2024-07-20T08:02:45Z",
+    "speed": 40,
+    "status": "Normal Speed"
+  },
+  {
+    "latitude": 17.421,
+    "longitude": 78.4918,
+    "timestamp": "2024-07-20T08:03:00Z",
+    "speed": 45,
+    "status": "Normal Speed"
+  },
+  {
+    "latitude": 17.4225,
+    "longitude": 78.4935,
+    "timestamp": "2024-07-20T08:03:15Z",
+    "speed": 40,
+    "status": "Traffic Ahead"
+  },
+  {
+    "latitude": 17.4238,
+    "longitude": 78.495,
+    "timestamp": "2024-07-20T08:03:30Z",
+    "speed": 25,
+    "status": "Slow Traffic"
+  },
+  {
+    "latitude": 17.4248,
+    "longitude": 78.4962,
+    "timestamp": "2024-07-20T08:03:45Z",
+    "speed": 20,
+    "status": "Heavy Traffic"
+  },
+  {
+    "latitude": 17.4255,
+    "longitude": 78.497,
+    "timestamp": "2024-07-20T08:04:00Z",
+    "speed": 15,
+    "status": "Stop & Go"
+  },
+  {
+    "latitude": 17.426,
+    "longitude": 78.4975,
+    "timestamp": "2024-07-20T08:04:15Z",
+    "speed": 10,
+    "status": "Traffic Jam"
+  },
+  {
+    "latitude": 17.4262,
+    "longitude": 78.4977,
+    "timestamp": "2024-07-20T08:04:30Z",
+    "speed": 5,
+    "status": "Almost Stopped"
+  },
+  {
+    "latitude": 17.4263,
+    "longitude": 78.4978,
+    "timestamp": "2024-07-20T08:04:45Z",
+    "speed": 0,
+    "status": "Traffic Stop"
+  },
+  {
+    "latitude": 17.4265,
+    "longitude": 78.498,
+    "timestamp": "2024-07-20T08:05:00Z",
+    "speed": 8,
+    "status": "Moving Again"
+  },
+  {
+    "latitude": 17.427,
+    "longitude": 78.4985,
+    "timestamp": "2024-07-20T08:05:15Z",
+    "speed": 20,
+    "status": "Traffic Clearing"
+  },
+  {
+    "latitude": 17.4278,
+    "longitude": 78.4995,
+    "timestamp": "2024-07-20T08:05:30Z",
+    "speed": 35,
+    "status": "Normal Speed"
+  },
+  {
+    "latitude": 17.4288,
+    "longitude": 78.5008,
+    "timestamp": "2024-07-20T08:05:45Z",
+    "speed": 40,
+    "status": "Normal Speed"
+  },
+  {
+    "latitude": 17.43,
+    "longitude": 78.5022,
+    "timestamp": "2024-07-20T08:06:00Z",
+    "speed": 45,
+    "status": "Normal Speed"
+  },
+  {
+    "latitude": 17.4315,
+    "longitude": 78.5038,
+    "timestamp": "2024-07-20T08:06:15Z",
+    "speed": 40,
+    "status": "School Zone Ahead"
+  },
+  {
+    "latitude": 17.4328,
+    "longitude": 78.5052,
+    "timestamp": "2024-07-20T08:06:30Z",
+    "speed": 25,
+    "status": "School Zone"
+  },
+  {
+    "latitude": 17.4338,
+    "longitude": 78.5062,
+    "timestamp": "2024-07-20T08:06:45Z",
+    "speed": 20,
+    "status": "School Zone"
+  },
+  {
+    "latitude": 17.4345,
+    "longitude": 78.507,
+    "timestamp": "2024-07-20T08:07:00Z",
+    "speed": 15,
+    "status": "Near School"
+  },
+  {
+    "latitude": 17.435,
+    "longitude": 78.5075,
+    "timestamp": "2024-07-20T08:07:15Z",
+    "speed": 10,
+    "status": "Student Pickup"
+  },
+  {
+    "latitude": 17.4352,
+    "longitude": 78.5077,
+    "timestamp": "2024-07-20T08:07:30Z",
+    "speed": 5,
+    "status": "Loading Students"
+  },
+  {
+    "latitude": 17.4353,
+    "longitude": 78.5078,
+    "timestamp": "2024-07-20T08:07:45Z",
+    "speed": 0,
+    "status": "At School Stop 1"
+  },
+  {
+    "latitude": 17.4353,
+    "longitude": 78.5078,
+    "timestamp": "2024-07-20T08:08:00Z",
+    "speed": 0,
+    "status": "Loading Students"
+  },
+  {
+    "latitude": 17.4355,
+    "longitude": 78.508,
+    "timestamp": "2024-07-20T08:08:15Z",
+    "speed": 8,
+    "status": "Leaving School"
+  },
+  {
+    "latitude": 17.436,
+    "longitude": 78.5085,
+    "timestamp": "2024-07-20T08:08:30Z",
+    "speed": 20,
+    "status": "School Zone"
+  },
+  {
+    "latitude": 17.4368,
+    "longitude": 78.5095,
+    "timestamp": "2024-07-20T08:08:45Z",
+    "speed": 35,
+    "status": "Normal Speed"
+  },
+  {
+    "latitude": 17.4378,
+    "longitude": 78.5108,
+    "timestamp": "2024-07-20T08:09:00Z",
+    "speed": 40,
+    "status": "On Banjara Hills Road"
+  },
+  {
+    "latitude": 17.439,
+    "longitude": 78.5122,
+    "timestamp": "2024-07-20T08:09:15Z",
+    "speed": 45,
+    "status": "Normal Speed"
+  },
+  {
+    "latitude": 17.4405,
+    "longitude": 78.5138,
+    "timestamp": "2024-07-20T08:09:30Z",
+    "speed": 50,
+    "status": "Highway Section"
+  },
+  {
+    "latitude": 17.4422,
+    "longitude": 78.5155,
+    "timestamp": "2024-07-20T08:09:45Z",
+    "speed": 55,
+    "status": "Highway Section"
+  },
+  {
+    "latitude": 17.444,
+    "longitude": 78.5175,
+    "timestamp": "2024-07-20T08:10:00Z",
+    "speed": 50,
+    "status": "Exit Approaching"
+  },
+  {
+    "latitude": 17.4455,
+    "longitude": 78.519,
+    "timestamp": "2024-07-20T08:10:15Z",
+    "speed": 40,
+    "status": "Taking Exit"
+  },
+  {
+    "latitude": 17.4468,
+    "longitude": 78.5202,
+    "timestamp": "2024-07-20T08:10:30Z",
+    "speed": 35,
+    "status": "On Local Road"
+  },
+  {
+    "latitude": 17.448,
+    "longitude": 78.5212,
+    "timestamp": "2024-07-20T08:10:45Z",
+    "speed": 30,
+    "status": "Residential Area"
+  },
+  {
+    "latitude": 17.449,
+    "longitude": 78.522,
+    "timestamp": "2024-07-20T08:11:00Z",
+    "speed": 25,
+    "status": "Residential Area"
+  },
+  {
+    "latitude": 17.4498,
+    "longitude": 78.5226,
+    "timestamp": "2024-07-20T08:11:15Z",
+    "speed": 20,
+    "status": "Stop Ahead"
+  },
+  {
+    "latitude": 17.4504,
+    "longitude": 78.523,
+    "timestamp": "2024-07-20T08:11:30Z",
+    "speed": 15,
+    "status": "Approaching Stop"
+  },
+  {
+    "latitude": 17.4508,
+    "longitude": 78.5233,
+    "timestamp": "2024-07-20T08:11:45Z",
+    "speed": 10,
+    "status": "Student Pickup"
+  },
+  {
+    "latitude": 17.451,
+    "longitude": 78.5235,
+    "timestamp": "2024-07-20T08:12:00Z",
+    "speed": 0,
+    "status": "At Stop 2"
+  },
+  {
+    "latitude": 17.451,
+    "longitude": 78.5235,
+    "timestamp": "2024-07-20T08:12:15Z",
+    "speed": 0,
+    "status": "Loading Students"
+  },
+  {
+    "latitude": 17.4512,
+    "longitude": 78.5237,
+    "timestamp": "2024-07-20T08:12:30Z",
+    "speed": 5,
+    "status": "Starting"
+  },
+  {
+    "latitude": 17.4518,
+    "longitude": 78.5242,
+    "timestamp": "2024-07-20T08:12:45Z",
+    "speed": 20,
+    "status": "Residential Area"
+  },
+  {
+    "latitude": 17.4528,
+    "longitude": 78.525,
+    "timestamp": "2024-07-20T08:13:00Z",
+    "speed": 30,
+    "status": "Normal Speed"
+  },
+  {
+    "latitude": 17.454,
+    "longitude": 78.526,
+    "timestamp": "2024-07-20T08:13:15Z",
+    "speed": 35,
+    "status": "Normal Speed"
+  },
+  {
+    "latitude": 17.4555,
+    "longitude": 78.5272,
+    "timestamp": "2024-07-20T08:13:30Z",
+    "speed": 40,
+    "status": "Main Road"
+  },
+  {
+    "latitude": 17.4572,
+    "longitude": 78.5285,
+    "timestamp": "2024-07-20T08:13:45Z",
+    "speed": 45,
+    "status": "Normal Speed"
+  },
+  {
+    "latitude": 17.459,
+    "longitude": 78.53,
+    "timestamp": "2024-07-20T08:14:00Z",
+    "speed": 50,
+    "status": "Normal Speed"
+  },
+  {
+    "latitude": 17.461,
+    "longitude": 78.5318,
+    "timestamp": "2024-07-20T08:14:15Z",
+    "speed": 45,
+    "status": "Turn Coming"
+  },
+  {
+    "latitude": 17.4628,
+    "longitude": 78.5335,
+    "timestamp": "2024-07-20T08:14:30Z",
+    "speed": 35,
+    "status": "Turning Left"
+  },
+  {
+    "latitude": 17.4642,
+    "longitude": 78.5348,
+    "timestamp": "2024-07-20T08:14:45Z",
+    "speed": 40,
+    "status": "New Direction"
+  },
+  {
+    "latitude": 17.4658,
+    "longitude": 78.5362,
+    "timestamp": "2024-07-20T08:15:00Z",
+    "speed": 45,
+    "status": "Normal Speed"
+  },
+  {
+    "latitude": 17.4675,
+    "longitude": 78.5378,
+    "timestamp": "2024-07-20T08:15:15Z",
+    "speed": 40,
+    "status": "Commercial Area"
+  },
+  {
+    "latitude": 17.469,
+    "longitude": 78.5392,
+    "timestamp": "2024-07-20T08:15:30Z",
+    "speed": 30,
+    "status": "Busy Area"
+  },
+  {
+    "latitude": 17.4702,
+    "longitude": 78.5403,
+    "timestamp": "2024-07-20T08:15:45Z",
+    "speed": 25,
+    "status": "Market Area"
+  },
+  {
+    "latitude": 17.4712,
+    "longitude": 78.5412,
+    "timestamp": "2024-07-20T08:16:00Z",
+    "speed": 20,
+    "status": "Crowded Street"
+  },
+  {
+    "latitude": 17.472,
+    "longitude": 78.5418,
+    "timestamp": "2024-07-20T08:16:15Z",
+    "speed": 15,
+    "status": "Heavy Pedestrians"
+  },
+  {
+    "latitude": 17.4725,
+    "longitude": 78.5422,
+    "timestamp": "2024-07-20T08:16:30Z",
+    "speed": 10,
+    "status": "Stop Sign"
+  },
+  {
+    "latitude": 17.4728,
+    "longitude": 78.5424,
+    "timestamp": "2024-07-20T08:16:45Z",
+    "speed": 5,
+    "status": "Almost Stopped"
+  },
+  {
+    "latitude": 17.473,
+    "longitude": 78.5425,
+    "timestamp": "2024-07-20T08:17:00Z",
+    "speed": 0,
+    "status": "Traffic Light"
+  },
+  {
+    "latitude": 17.4732,
+    "longitude": 78.5427,
+    "timestamp": "2024-07-20T08:17:15Z",
+    "speed": 8,
+    "status": "Light Green"
+  },
+  {
+    "latitude": 17.4738,
+    "longitude": 78.5432,
+    "timestamp": "2024-07-20T08:17:30Z",
+    "speed": 25,
+    "status": "Normal Speed"
+  },
+  {
+    "latitude": 17.4748,
+    "longitude": 78.544,
+    "timestamp": "2024-07-20T08:17:45Z",
+    "speed": 35,
+    "status": "Clear Road"
+  },
+  {
+    "latitude": 17.476,
+    "longitude": 78.545,
+    "timestamp": "2024-07-20T08:18:00Z",
+    "speed": 40,
+    "status": "Normal Speed"
+  },
+  {
+    "latitude": 17.4775,
+    "longitude": 78.5462,
+    "timestamp": "2024-07-20T08:18:15Z",
+    "speed": 45,
+    "status": "Normal Speed"
+  },
+  {
+    "latitude": 17.4792,
+    "longitude": 78.5476,
+    "timestamp": "2024-07-20T08:18:30Z",
+    "speed": 50,
+    "status": "Open Road"
+  },
+  {
+    "latitude": 17.481,
+    "longitude": 78.5492,
+    "timestamp": "2024-07-20T08:18:45Z",
+    "speed": 55,
+    "status": "Highway Access"
+  },
+  {
+    "latitude": 17.483,
+    "longitude": 78.551,
+    "timestamp": "2024-07-20T08:19:00Z",
+    "speed": 60,
+    "status": "Highway Speed"
+  },
+  {
+    "latitude": 17.4852,
+    "longitude": 78.553,
+    "timestamp": "2024-07-20T08:19:15Z",
+    "speed": 55,
+    "status": "Merging Traffic"
+  },
+  {
+    "latitude": 17.4872,
+    "longitude": 78.5548,
+    "timestamp": "2024-07-20T08:19:30Z",
+    "speed": 50,
+    "status": "Normal Speed"
+  },
+  {
+    "latitude": 17.489,
+    "longitude": 78.5565,
+    "timestamp": "2024-07-20T08:19:45Z",
+    "speed": 45,
+    "status": "Exit Coming"
+  },
+  {
+    "latitude": 17.4905,
+    "longitude": 78.558,
+    "timestamp": "2024-07-20T08:20:00Z",
+    "speed": 35,
+    "status": "Taking Exit"
+  },
+  {
+    "latitude": 17.4918,
+    "longitude": 78.5592,
+    "timestamp": "2024-07-20T08:20:15Z",
+    "speed": 30,
+    "status": "City Streets"
+  },
+  {
+    "latitude": 17.4928,
+    "longitude": 78.5602,
+    "timestamp": "2024-07-20T08:20:30Z",
+    "speed": 25,
+    "status": "School Zone"
+  },
+  {
+    "latitude": 17.4935,
+    "longitude": 78.5608,
+    "timestamp": "2024-07-20T08:20:45Z",
+    "speed": 20,
+    "status": "School Zone"
+  },
+  {
+    "latitude": 17.494,
+    "longitude": 78.5612,
+    "timestamp": "2024-07-20T08:21:00Z",
+    "speed": 15,
+    "status": "Near School"
+  },
+  {
+    "latitude": 17.4943,
+    "longitude": 78.5614,
+    "timestamp": "2024-07-20T08:21:15Z",
+    "speed": 10,
+    "status": "Student Pickup"
+  },
+  {
+    "latitude": 17.4945,
+    "longitude": 78.5615,
+    "timestamp": "2024-07-20T08:21:30Z",
+    "speed": 5,
+    "status": "Approaching Stop"
+  },
+  {
+    "latitude": 17.4946,
+    "longitude": 78.5616,
+    "timestamp": "2024-07-20T08:21:45Z",
+    "speed": 0,
+    "status": "At Final School"
+  },
+  {
+    "latitude": 17.4946,
+    "longitude": 78.5616,
+    "timestamp": "2024-07-20T08:22:00Z",
+    "speed": 0,
+    "status": "Students Disembarking"
+  },
+  {
+    "latitude": 17.4946,
+    "longitude": 78.5616,
+    "timestamp": "2024-07-20T08:22:15Z",
+    "speed": 0,
+    "status": "Route Complete"
+  }
+]
